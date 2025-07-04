@@ -1,9 +1,10 @@
 "use client";
 
-import { foodWithCategories } from "@/app/(main)/_components/food-with-category/FoodsWithCategories";
 import { AddFoodModal } from "./AddFoodModal";
 import { AdminFoodCard } from "./AdminFoodCard";
 import { AdminFoodSkeleton } from "./AdminFoodSkeleton";
+import { useEffect, useState } from "react";
+import { foodWithCategory } from "@/lib/utils/types";
 
 export type FoodCategory = {
   _id: string;
@@ -21,6 +22,20 @@ export type FoodCategory = {
 };
 
 export const AdminFoodsSection = () => {
+  const [foodWithCategories, setFoodWithCategories] = useState<
+    foodWithCategory[]
+  >([]);
+  useEffect(() => {
+    const getCategories = async () => {
+      const response = await fetch("http://localhost:4200/food");
+      const data = await response.json();
+
+      setFoodWithCategories(data.foodsWithCategories);
+    };
+    getCategories();
+  }, []);
+  console.log(foodWithCategories);
+
   if (!foodWithCategories) return null;
 
   if (!foodWithCategories.length) return <AdminFoodSkeleton />;
