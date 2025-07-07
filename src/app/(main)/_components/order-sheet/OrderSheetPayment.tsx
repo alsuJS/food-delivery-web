@@ -8,8 +8,17 @@ import {
 
 import { SidebarDashLine } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { useContext } from "react";
+import { FoodCartContext } from "@/provider/FoodProvider";
 
 export const OrderSheetPayment = ({ openModal }: { openModal: () => void }) => {
+  const { foodCart } = useContext(FoodCartContext);
+  const totalPrice = foodCart.reduce((accumulator, currentValue) => {
+    const total = currentValue.price * currentValue.quantity;
+
+    return total;
+  }, 0);
+  console.log(totalPrice);
   return (
     <Card className="mt-6">
       <CardHeader className="p-4 ">
@@ -19,7 +28,7 @@ export const OrderSheetPayment = ({ openModal }: { openModal: () => void }) => {
       <CardContent className="p-4">
         <div className="flex justify-between">
           <p className="text-[#71717A] font-light">Items</p>
-          <p className="font-bold">12₮</p>
+          <p className="font-bold">{totalPrice}</p>
         </div>
 
         <div className="flex justify-between">
