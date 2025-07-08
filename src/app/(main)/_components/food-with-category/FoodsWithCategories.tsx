@@ -17,7 +17,7 @@ export const FoodsWithCategories = () => {
     };
     getCategories();
   }, []);
-  console.log(foodWithCategories);
+  console.log("foodWithCategories", foodWithCategories);
 
   if (!foodWithCategories?.length) return null;
 
@@ -37,10 +37,11 @@ export const FoodsWithCategories = () => {
               return (
                 <div key={food?._id}>
                   <FoodCard
-                    foodName={food?.foodName}
-                    price={food?.price}
-                    image={food?.image}
-                    ingredients={food?.ingredients}
+                    food={food}
+                    // foodName={food?.foodName}
+                    // price={food?.price}
+                    // image={food?.image}
+                    // ingredients={food?.ingredients}
                     _id={food?._id}
                   />
                 </div>

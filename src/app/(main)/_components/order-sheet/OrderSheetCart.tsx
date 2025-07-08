@@ -24,7 +24,6 @@ import { FoodCartContext } from "@/provider/FoodProvider";
 // ];
 export const OrderSheetCart = () => {
   const { foodCart } = useContext(FoodCartContext);
-  console.log(foodCart);
   const renderFoodCard = () => {
     if (foodCart?.length) {
       return foodCart?.map((item) => {

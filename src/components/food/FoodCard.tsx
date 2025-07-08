@@ -3,10 +3,11 @@
 import { Card } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 import Image from "next/legacy/image";
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useContext, useState } from "react";
 import { Button } from "../ui/button";
 import { AddToCartAlert } from "./AddToCartAlert";
 import { FoodDetailModal } from "./FoodDetailModal";
+import { FoodCartContext } from "@/provider/FoodProvider";
 
 type FoodCardProps = {
   foodName: string;
@@ -14,22 +15,20 @@ type FoodCardProps = {
   ingredients: string;
   image: string;
   _id: string;
+  food: any;
 };
 
-export const FoodCard = ({
-  foodName,
-
-  ingredients,
-  image,
-}: FoodCardProps) => {
-  const food = {
-    _id: "1",
-    foodName: "foodName",
-    price: 1200,
-    image: "",
-    ingredients: "ingredients ingredients",
-  };
-
+export const FoodCard = ({ food }: FoodCardProps) => {
+  // const food = {
+  //   _id: "1",
+  //   foodName: "foodName",
+  //   price: 1200,
+  //   image: "",
+  //   ingredients: "ingredients ingredients",
+  // };
+  console.log(food);
+  const { foodCart, setFoodCart } = useContext(FoodCartContext);
+  console.log("foodCart", foodCart);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
 
@@ -51,7 +50,7 @@ export const FoodCard = ({
       <div onClick={onToggleModal}>
         <Card className="flex flex-col gap-5 p-4 bg-white border-none shadow-none cursor-pointer w-99 h-86 rounded-3xl">
           <div className="relative flex items-end justify-end overflow-hidden h-52 rounded-3xl">
-            <Image src={image} alt={foodName} objectFit="cover" layout="fill" />
+            {/* <Image src={image} alt={foodName} objectFit="cover" layout="fill" /> */}
             <Button
               className="absolute bg-white rounded-full w-11 h-11 bottom-5 right-5"
               onClick={handleAddToCart}

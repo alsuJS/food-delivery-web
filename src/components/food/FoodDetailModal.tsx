@@ -15,7 +15,7 @@ import { useContext, useState } from "react";
 import { FoodCartContext } from "@/provider/FoodProvider";
 
 type FoodDetailModalProps = {
-  food: never;
+  food: any;
   isModalOpen: boolean;
   onToggleModal: () => void;
 };
@@ -26,11 +26,12 @@ export const FoodDetailModal = ({
   onToggleModal,
 }: FoodDetailModalProps) => {
   const [quantity, setQuantity] = useState<number>(1);
+  
 
   const { foodCart, setFoodCart } = useContext(FoodCartContext);
 
   const { foodName, image, ingredients, price } = food;
-  console.log(food);
+
   const addQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
