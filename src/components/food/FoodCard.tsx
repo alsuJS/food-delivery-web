@@ -26,9 +26,8 @@ export const FoodCard = ({ food }: FoodCardProps) => {
   //   image: "",
   //   ingredients: "ingredients ingredients",
   // };
-  console.log(food);
   const { foodCart, setFoodCart } = useContext(FoodCartContext);
-  console.log("foodCart", foodCart);
+  console.log("foodCart", food);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
 
@@ -50,7 +49,7 @@ export const FoodCard = ({ food }: FoodCardProps) => {
       <div onClick={onToggleModal}>
         <Card className="flex flex-col gap-5 p-4 bg-white border-none shadow-none cursor-pointer w-99 h-86 rounded-3xl">
           <div className="relative flex items-end justify-end overflow-hidden h-52 rounded-3xl">
-            {/* <Image src={image} alt={foodName} objectFit="cover" layout="fill" /> */}
+            <Image src={food.image} alt={""} objectFit="cover" layout="fill" />
             <Button
               className="absolute bg-white rounded-full w-11 h-11 bottom-5 right-5"
               onClick={handleAddToCart}
@@ -61,12 +60,14 @@ export const FoodCard = ({ food }: FoodCardProps) => {
 
           <div className="w-full">
             <div className="flex justify-between">
-              <p className="text-2xl font-semibold text-red-500">{foodName}</p>
+              <p className="text-2xl font-semibold text-red-500">
+                {food.foodName}
+              </p>
               <p className="text-lg font-semibold text-[#09090B]">12 ₮</p>
             </div>
 
             <div className="mt-2 text-sm text-[#09090B] font-normal">
-              {ingredients}
+              {food.ingredients}
             </div>
           </div>
         </Card>

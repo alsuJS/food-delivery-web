@@ -5,6 +5,7 @@ import { CircleX, Minus, Plus } from "lucide-react";
 import Image from "next/image";
 
 export const OrderSheetFoodItem = ({ food, quantity }) => {
+  console.log(quantity);
   return (
     <>
       <div className="flex gap-3">
