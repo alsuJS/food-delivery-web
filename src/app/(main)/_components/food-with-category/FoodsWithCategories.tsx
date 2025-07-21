@@ -17,7 +17,6 @@ export const FoodsWithCategories = () => {
     };
     getCategories();
   }, []);
-  console.log("foodWithCategories", foodWithCategories);
 
   if (!foodWithCategories?.length) return null;
 

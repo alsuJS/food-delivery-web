@@ -19,15 +19,7 @@ type FoodCardProps = {
 };
 
 export const FoodCard = ({ food }: FoodCardProps) => {
-  // const food = {
-  //   _id: "1",
-  //   foodName: "foodName",
-  //   price: 1200,
-  //   image: "",
-  //   ingredients: "ingredients ingredients",
-  // };
-  const { foodCart, setFoodCart } = useContext(FoodCartContext);
-  console.log("foodCart", food);
+  const { price, foodName, ingredients, image } = food;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
 
@@ -36,7 +28,6 @@ export const FoodCard = ({ food }: FoodCardProps) => {
   };
 
   const handleAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    console.log(event);
     setShowAlert(true);
   };
 

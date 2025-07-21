@@ -26,7 +26,6 @@ export const FoodDetailModal = ({
   onToggleModal,
 }: FoodDetailModalProps) => {
   const [quantity, setQuantity] = useState<number>(1);
-  
 
   const { foodCart, setFoodCart } = useContext(FoodCartContext);
 
@@ -47,6 +46,7 @@ export const FoodDetailModal = ({
         foodName: foodName,
         price: price,
         quantity: quantity,
+        food: food,
       },
     ]);
     onToggleModal();

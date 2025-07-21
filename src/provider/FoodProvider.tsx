@@ -37,6 +37,7 @@ export default function FoodCartContextProvider({
       foodName: string;
       price: number;
       quantity: number;
+      image:string;
     }[]
   >([]);
 
