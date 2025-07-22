@@ -3,9 +3,14 @@ import { Button } from "@/components/ui/button";
 
 import { CircleX, Minus, Plus } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
-export const OrderSheetFoodItem = ({ food, quantity }) => {
-  console.log(quantity);
+export const OrderSheetFoodItem = ({
+  food,
+  quantity,
+  incrementFoodQuantity,
+  decrimentFoodQuantity,
+}) => {
   return (
     <>
       <div className="flex gap-3">
@@ -33,17 +38,23 @@ export const OrderSheetFoodItem = ({ food, quantity }) => {
               color="red"
               className="cursor-pointer"
             />
-          </div>  
+          </div>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <Button variant="ghost">
+              <Button
+                variant="ghost"
+                onClick={() => decrimentFoodQuantity(food._id)}
+              >
                 <Minus />
               </Button>
 
               <div className="text-lg font-semibold">{quantity}</div>
 
-              <Button variant="ghost">
+              <Button
+                variant="ghost"
+                onClick={() => incrementFoodQuantity(food._id)}
+              >
                 <Plus />
               </Button>
             </div>

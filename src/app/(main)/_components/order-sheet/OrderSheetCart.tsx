@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { FoodCartContext } from "@/provider/FoodProvider";
 
 export const OrderSheetCart = () => {
-  const { foodCart } = useContext(FoodCartContext);
+  const { foodCart,incrementFoodQuantity,decrimentFoodQuantity, } = useContext(FoodCartContext);
 
   console.log(foodCart);
   const renderFoodCard = () => {
@@ -17,7 +17,10 @@ export const OrderSheetCart = () => {
             key={item.food._id}
             food={item.food}
             quantity={item.quantity}
-            image={item.food.image}
+            incrementFoodQuantity={incrementFoodQuantity}
+            decrimentFoodQuantity={decrimentFoodQuantity}
+
+            // image={item.food.image}
           />
         );
       });
